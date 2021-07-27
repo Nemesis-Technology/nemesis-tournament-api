@@ -1,5 +1,5 @@
-package com.mentality.tornamentGenerator.repositories;
-import com.mentality.tornamentGenerator.models.Tournament;
+package com.nemesisTechnology.tournamentGenerator.repositories;
+import com.nemesisTechnology.tournamentGenerator.models.Tournament;
 import org.springframework.stereotype.Repository;
 
 import java.util.HashMap;
