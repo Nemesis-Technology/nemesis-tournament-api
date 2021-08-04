@@ -1,4 +1,5 @@
 package com.nemesisTechnology.tournamentGenerator.repositories;
+import com.nemesisTechnology.tournamentGenerator.exceptions.ItemNotFoundException;
 import com.nemesisTechnology.tournamentGenerator.models.Tournament;
 import org.springframework.stereotype.Repository;
 
@@ -16,7 +17,11 @@ public class TournamentRepositoryImpl implements TournamentRepository{
 
     @Override
     public Tournament findTournamentById(String id) {
-        return tournaments.get(id);
+        Tournament tournament = tournaments.get(id);
+        if (tournament == null) {
+            throw new ItemNotFoundException("tournament");
+        }
+        return tournament;
     }
 
 }

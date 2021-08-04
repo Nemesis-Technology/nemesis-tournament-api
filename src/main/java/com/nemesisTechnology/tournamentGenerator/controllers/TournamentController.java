@@ -18,16 +18,13 @@ public class TournamentController {
 
     @PostMapping ()
     public ResponseEntity<String> addTournament(@RequestBody Tournament tournament) {
-        try {
             tournamentRepository.addTournament(tournament);
             return new ResponseEntity<String>(tournament.id, HttpStatus.OK);
-        } catch (Exception e) {
-            return new ResponseEntity<String>(e.getMessage().toString(), HttpStatus.INTERNAL_SERVER_ERROR);
-        }
     }
 
     @GetMapping("{id}")
-    public Tournament findTournament(@PathVariable String id) {
-        return tournamentRepository.findTournamentById(id);
+    public ResponseEntity<Tournament> findTournament(@PathVariable String id) {
+        Tournament tournament =  tournamentRepository.findTournamentById(id);
+        return new ResponseEntity<Tournament>(tournament, HttpStatus.OK);
     }
 }
